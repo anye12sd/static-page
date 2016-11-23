@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raycreater</title>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+            background: url("img/bg.jpg") no-repeat;
+            min-width: 1200px;
+
+        }
+        .top{
+            height:68px;
+            background: #fff;
+        }
+        .title_bar{
+            height:40px;
+            background: #353535;
+        }
+        .title_bar ul{
+            list-style: none;
+            line-height: 40px;
+            width:1200px;
+            margin:5px auto;
+        }
+        .title_bar ul li{
+            float:left;
+            padding:0 40px;
+            color:#fff;
+            cursor:pointer;
+        }
+        .title_bar ul li.active{
+            background: #006dba;
+        }
+        .title_bar ul li:hover{
+            background: #006dba;
+        }
+        .lunbo{
+            width:100%;
+            overflow: hidden;
+        }
+        .people{
+            width:1200px;
+            margin:0 auto;
+            margin-top:40px;
+            position:relative;
+        }
+        .people span{
+            text-align: center;
+        }
+        .people ul{
+            list-style: none;
+            line-height: 40px;
+            position:absolute; top:0;
+        }
+        .people ul li{
+            float:left;
+            padding:0 104px;
+            color:#fff;
+            cursor:default;
+            text-align: center;
+        }
+        .new_games{
+            width:1200px;
+            background:#1f1f1f ;
+            margin:0 auto;
+            margin-top:14px;
+            padding-top:10px;
+            height:410px;
+        }
+        .new_games_top{
+            border-left:8px solid #006dba;
+            height:24px;
+            margin-left:20px;
+            background:#1f1f1f ;
+            color:#fff;
+            line-height: 24px;
+        }
+        .new_games ul{
+            list-style: none;
+        }
+        .new_games ul li{
+            float:left;
+            margin-right:9px;
+            border-bottom:4px solid #006dba;
+            height:292px;
+        }
+        .clearfloat{
+            clear:both;
+            height:0;
+            font-size: 1px;
+            line-height: 0px;
+        }
+        .new_games_bottom{
+            height:60px;
+            background:#2b2b2b ;
+            margin-top:-2px;
+        }
+        .left p{
+            color:#fff;
+            font-size:12px;
+            margin-left:14px;
+        }
+        .right p{
+            margin:20px 10px 0 0;
+            color:#006dba;
+        }
+        .hot{
+            position:absolute;
+            top:0px;
+            left:231px;
+        }
+        .middle{
+            position:relative;
+        }
+        .new{
+            position:absolute;
+            top:0px;
+            left:469px;
+        }
+        .new_games_bottom .left a{
+            color:#fff;
+            text-decoration: none;
+        }
+        .new_games_bottom .right a{
+            color:#006dba;
+            text-decoration: none;
+        }
+        .featured_games_top{
+            border-left:8px solid #006dba;
+            height:24px;
+            margin-left:20px;
+            background:#1f1f1f ;
+            color:#fff;
+            line-height: 24px;
+        }
+        .featured_games{
+            width:1200px;
+            background:#1f1f1f ;
+            margin:0 auto;
+            margin-top:14px;
+            padding-top:10px;
+            height:520px;
+        }
+        .featured_games ul{
+            list-style: none;
+        }
+        .featured_games ul li{
+            float:left;
+            margin-right:9px;
+            height:200px;
+        }
+        .featured_games_bottom{
+            height:60px;
+            margin-top:-2px;
+        }
+        .featured_games_bottom .left a{
+            color:#fff;
+            text-decoration: none;
+        }
+        .page ul li{
+            width:30px;
+            height:30px;
+            color:#fff;
+            text-align: center;
+            line-height: 30px;
+            background: #000;
+            cursor: pointer;
+        }
+        .page{
+            margin:0 auto;
+            width:300px;
+        }
+        .page .active{
+            background: #3080c6;
+        }
+        .page ul li:hover{
+            background: #3080c6;
+        }
+        .bottom{
+            min-width:1200px;
+            background: #000;
+            height:80px;
+            margin-top:40px;
+            position: relative;
+        }
+        .login{
+            width:400px;
+            height:350px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.7);
+            position:absolute;
+            top:10px;
+            right:100px;
+        }
+        .lunbo_{
+            position: relative;
+        }
+        .login_left{
+            float: left;
+            width:200px;
+            height:46px;
+            line-height: 46px;
+            background: rgba(255,255,255,0.8);;
+            border-radius: 10px 0 0 0;
+            text-align: center;
+            border-bottom: 3px solid #006dba;
+            font-size: 22px;
+        }
+        .login_right{
+            float: right;
+            width:200px;
+            height:46px;
+            line-height: 46px;
+            border-radius: 0 10px 0 0;
+            text-align: center;
+            font-size: 22px;
+        }
+        .login .input{
+            margin-top:15px;
+            margin-left:44px;
+        }
+        .forget a{
+            color:#000;
+            text-decoration: none;
+        }
+        .login_in{
+            width:300px;
+            height:50px;
+            background: #006dba;
+            position: absolute;
+            top:230px;left:45px;
+            text-align:center;
+            line-height: 50px;
+            color:#fff;
+            font-size: 22px;
+        }
+        .login .others{
+            border-top:1px #666 solid;
+            width:300px;
+            height:50px;
+            position:absolute;
+            top: 292px;
+            left:44px;
+        }
+        .login .others img{
+            position: absolute;
+            top: 13px;
+            left:160px;
+        }
+        .login .others p{
+            font-size:14px;
+        }
+        .register{
+            width:400px;
+            height:350px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.7);
+            position:absolute;
+            top:10px;
+            right:100px;
+            display: none;
+        }
+        .register_left{
+            float: left;
+            width:200px;
+            height:46px;
+            line-height: 46px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .register_right {
+            float: right;
+            width: 200px;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 0 10px 0 0;
+            text-align: center;
+            font-size: 22px;
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 3px solid #006dba;
+        }
+        .register .input{
+            margin-top:15px;
+            margin-left:44px;
+        }
+        .sign_in{
+            width:300px;
+            height:50px;
+            background: #006dba;
+            position: absolute;
+            top:290px;left:45px;
+            text-align:center;
+            line-height: 50px;
+            color:#fff;
+            font-size: 22px;
+        }
+        .others img{
+            position: absolute;
+            top: 13px;
+            left:160px;
+        }
+        .others p{
+            font-size:14px;
+        }
+        .date{
+            margin-left:4px;
+        }
+        .date ul{
+            list-style: none;
+        }
+        .date ul li{
+            margin-right:26px;
+            float: left
+        }
+        .policy input{
+            margin-left:44px;
+            margin-top:9px;
+        }
+        .policy{
+            font-size:10px;
+        }
+        .logined{
+            width:400px;
+            height:350px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.7);
+            position:absolute;
+            top:10px;
+            right:100px;
+            display: none;
+        }
+        .register_left{
+            float: left;
+            width:200px;
+            height:46px;
+            line-height: 46px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .register_right {
+            float: right;
+            width: 200px;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 0 10px 0 0;
+            text-align: center;
+            font-size: 22px;
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 3px solid #006dba;
+        }
+        .register .input{
+            margin-top:15px;
+            margin-left:44px;
+        }
+        .sign_in{
+            width:300px;
+            height:50px;
+            background: #006dba;
+            position: absolute;
+            top:290px;left:45px;
+            text-align:center;
+            line-height: 50px;
+            color:#fff;
+            font-size: 22px;
+        }
+        .others img{
+            position: absolute;
+            top: 13px;
+            left:160px;
+        }
+        .others p{
+            font-size:14px;
+        }
+        .date{
+            margin-left:4px;
+        }
+        .date ul{
+            list-style: none;
+        }
+        .date ul li{
+            margin-right:26px;
+            float: left
+        }
+        .policy input{
+            margin-left:44px;
+            margin-top:9px;
+        }
+        .policy{
+            font-size:10px;
+        }
+        .close{
+            position: absolute;
+            right:0;
+        }
+        .head{
+            margin-top:30px;
+            margin-left:20px;
+        }
+         .p{
+            font-weight: bold;
+            position:absolute;
+            top:20px;
+            right:155px;
+        }
+        .chongzhi{
+            position: absolute;
+            top:100px;
+            left:170px;
+        }
+        .qiandao{
+            position: absolute;
+            top:100px;
+            left:260px;
+        }
+        .vip{
+            margin-left:70px;
+            margin-top:5px;
+        }
+        .start{
+            margin-left:59px;
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="top">
+            <img src="img/logo.png" alt="" style="padding-left:160px;">
+        </div>
+        <div class="title_bar">
+            <ul>
+                <li class="active">首页</li>
+                <li>用户中心</li>
+                <li>充值中心</li>
+                <li>礼包中心</li>
+                <li>积分商城</li>
+                <li>客服中心</li>
+                <li>玩家论坛</li>
+                <li>推广员</li>
+            </ul>
+        </div>
+        <div class="lunbo_">
+            <div class="lunbo">
+                <img src="img/img_08.jpg" alt="">
+            </div>
+            <div class="login">
+                    <div class="login_left" style="cursor: pointer">Login</div>
+                    <div class="login_right">Register</div>
+                <div style="clear: both"></div>
+                <form action="">
+                    <div class="input">
+                        <input type="text" placeholder="Email or nick name" style="width:300px;height:35px;"/>
+                        <input type="text" placeholder="Password" style="width:300px;height:35px;"/>
+                    </div>
+                    <div class="forget">
+                        <p style="float:left; font-size:10px;margin-left: 40px;"> <input type="checkbox"/></p>
+                        <p style="float:left; font-size:10px;"><a href="">keep me logged in</a></p>
+                        <p style="font-size:10px;float: right;margin-right: 52px"><a href="">forget Password?</a></p>
+                    </div>
+                    <a href="">
+                        <div class="login_in">
+                            login
+                        </div>
+                    </a>
+                </form>
+                <div class="others">
+                    <p>Other ways to login</p>
+                    <img src="img/login_03.png" alt="">
+                </div>
+            </div>
+            <div class="register">
+                <a href="">
+                    <div class="register_left">Login</div>
+                </a>
+                <a href="">
+                    <div class="register_right">Register</div>
+                </a>
+                <div style="clear: both"></div>
+                <form action="">
+                    <div class="input">
+                        <input type="text" placeholder="Email or nick name" style="width:300px;height:35px;"/>
+                        <input type="text" placeholder="Password" style="width:300px;height:35px;"/>
+                        <input type="text" placeholder="Password" style="width:300px;height:35px;"/>
+                    </div>
+                    <div class="date">
+                        <ul>
+                            <li><input type="text" placeholder="Month" style="width:80px;height:35px;"/></li>
+                            <li><input type="text" placeholder="Day" style="width:80px;height:35px;"/></li>
+                            <li><input type="text" placeholder="Year" style="width:80px;height:35px;"/></li>
+                        </ul>
+                    </div>
+                    <div class="policy">
+                        <input type="checkbox"/>I have read and agreed to the <a href="">Privacy Policy</a>
+                    </div>
+                        <div class="sign_in" style="cursor: pointer">
+                            sign in
+                        </div>
+                </form>
+            </div>
+            <div class="logined">
+                <div class="close">
+                    <a href=""><img src="img/logined_03.png" alt="" width="60px"></a>
+                </div>
+                <div class="head">
+                    <img src="img/logined_06.png" alt="">
+                    <div class="p">
+                        <p>Nickname</p>
+                        <p>剩余积分</p>
+                    </div>
+                </div>
+                <div class="chongzhi">
+                    <img src="img/logined_10.png" alt="">
+                </div>
+                <div class="qiandao">
+                    <img src="img/logined_12.png" alt="">
+                </div>
+                <div class="vip"><img src="img/vip2_18.png" alt=""></div>
+                <div class="start">
+                    <img src="img/start_22.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="people">
+            <span><img src="img/people_12.jpg" alt="" width="1200px"></span>
+            <ul>
+                <li><span style="font-size: 36px">15</span> <br><span style="font-size: 20px">Online Games</span></li>
+                <li><span style="font-size: 36px">8493183</span> <br><span style="font-size: 20px">Total players</span></li>
+                <li><span style="font-size: 36px">93183</span> <br><span style="font-size: 20px">Players Online</span></li>
+            </ul>
+        </div>
+        <div class="new_games">
+            <div class="new_games_top">
+                <span style="padding-left:10px;">Hot & New Games</span>
+            </div>
+            <div style="margin-left:-30px;" class="middle">
+                <ul>
+                    <li>
+                        <a href=""><img src="img/newGame_16.jpg" alt=""></a>
+                        <img src="img/hot_16.png" alt="" class="hot">
+                        <div class="new_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; background: #4e4e4e"><a href="">Category</a></p>
+                            </div>
+                            <div class="right" style="float:right">
+                                <p><a href="">PLAY> ></a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/newGame_16.jpg" alt=""></a>
+                        <img src="img/new_18.png" alt="" class="new">
+                        <div class="new_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; background: #4e4e4e"><a href="">Category</a></p>
+                            </div>
+                            <div class="right" style="float:right">
+                                <p><a href="">PLAY> ></a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/newGame_16.jpg" alt=""></a>
+                        <div class="new_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; background: #4e4e4e"><a href="">Category</a></p>
+                            </div>
+                            <div class="right" style="float:right">
+                                <p><a href="">PLAY> ></a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/newGame_16.jpg" alt=""></a>
+                        <div class="new_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; background: #4e4e4e"><a href="">Category</a></p>
+                            </div>
+                            <div class="right" style="float:right">
+                                <p><a href="">PLAY> ></a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/newGame_16.jpg" alt=""></a>
+                        <div class="new_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; background: #4e4e4e"><a href="">Category</a></p>
+                            </div>
+                            <div class="right" style="float:right">
+                                <p><a href="">PLAY> ></a></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+
+        <div class="featured_games">
+            <div class="featured_games_top">
+                <span style="padding-left:10px;">Featured Games</span>
+            </div>
+            <div style="margin-left:-30px;" class="middle">
+                <ul>
+                    <li>
+                        <a href=""><img src="img/2_03.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; "><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/2_03.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px;"><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/2_03.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px;"><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/2_03.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px;"><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/2_03.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; "><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfloat"></div>
+            </div>
+            <div style="margin-left:-30px;" class="middle">
+                <ul>
+                    <li>
+                        <a href=""><img src="img/2_05.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; "><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/2_05.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px;"><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/2_05.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px;"><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/2_05.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px;"><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href=""><img src="img/2_05.jpg" alt=""></a>
+                        <div class="featured_games_bottom">
+                            <div class="left" style="float:left">
+                                <p><a href="">Game Name</a></p>
+                                <p style="margin-top:-10px; "><a href="" style="color:#5d5e5e">Category</a></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfloat"></div>
+            </div>
+            <div class="page">
+                <ul>
+                    <li><</li>
+                    <li>1</li>
+                    <li class="active">2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom">
+            <div>
+                <img src="img/logo.png" alt="" height="44px;" style="position: absolute;top:18px;left:450px;">
+                <p style=" font-size:10px;color:#ccc;position: absolute;top:21px;left:650px;">Copyright ©2016 疾创信息科技有限公司, All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var login1 = document.getElementsByClassName("login")[0];
+        var register = document.getElementsByClassName("register")[0];
+        var login = document.getElementsByClassName("login_left")[0];
+        var signin = document.getElementsByClassName("sign_in")[0];
+        var logined = document.getElementsByClassName("logined")[0];
+        login.onclick = function(){
+            login1.style.display = 'none';
+            register.style.display = 'block';
+        };
+        signin.onclick = function(){
+            register.style.display = 'none';
+            logined.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
